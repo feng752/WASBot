@@ -3,7 +3,7 @@ import time
 from scraper import tips_and_resources
 
 # Authenticate with Twitter API
-auth = tweepy.OAuth1UserHandler("Ns11du5d94nkPUhAGRe8wgjow", "x6eJ9UbGGpJMaB34oscMJHVEkRpvo6eHNy3LYMtny4caaZMU5y", "3165048462-ROimi1pdhC0cVAtD7wtqFxYPq82srQVibFHjmz4", "0uadAxUpPqhqadw9vlNeDAvh7QXwJwFbWjbD4bBqfkHo4")
+auth = tweepy.OAuth1UserHandler("cosumer-key", "consumer-secret", "access-token", "access-token-secret")
 api = tweepy.API(auth)
 
 # Post a new tip or resource every hour
