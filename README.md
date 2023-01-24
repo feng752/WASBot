@@ -5,6 +5,8 @@ This is a Twitter bot that was created to help game developers stay up-to-date o
 ## Setup
 To use this bot, you will need to have a Twitter account and apply for a Twitter Developer account to get an API key and secret. You will also need to have Python 3 and the following libraries installed:
 
+`threading`
+
 `Tweepy`
 
 `requests`
