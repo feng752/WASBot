@@ -5,16 +5,16 @@ from scraper import tips_and_resources
 
 def tweeting():
 
-    consumer_key = "Ns11du5d94nkPUhAGRe8wgjow"
-    consumer_secret = "x6eJ9UbGGpJMaB34oscMJHVEkRpvo6eHNy3LYMtny4caaZMU5y"
-    access_token = "3165048462-AybyEBO46WVsLaoEwzrahrXjoq2zu0vampZ2Z0t"
-    access_token_secret = "QdZm8cuv41lTY51UUsDgbK6Hi2KYhYGVrO9qvCgzJjeXv"
+    consumer_key = ""
+    consumer_secret = ""
+    access_token = ""
+    access_token_secret = ""
 
     # Authenticate with Twitter API
     auth = tweepy.OAuth1UserHandler(consumer_key, consumer_secret, access_token, access_token_secret)
     api = tweepy.API(auth)
 
-    tweets = api.user_timeline(screen_name="nerdisland1728")
+    tweets = api.user_timeline(screen_name="")
 
     tweeted = set()  # Create a set to store previously tweeted articles
 
@@ -26,7 +26,6 @@ def tweeting():
             tweet_exists = False
             # Check if the current tweet has already been posted
             if item['title'].strip() in tweeted:
-                print("Duplicate, so skipping.\n")
                 continue
 
             if not tweet_exists:  # If tweet hasn't been tweeted, tweet it
