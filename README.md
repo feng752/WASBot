@@ -1,4 +1,4 @@
-# WASB-ot-: Twitter Bot for Game Development News
+# WASBot: Twitter Bot for Game Development News
 ## Introduction
 This is a Twitter bot that was created to help game developers stay up-to-date on the latest news and resources in the industry. The bot utilizes the Twitter API to post updates and the Beautiful Soup library to scrape news articles from various websites. Now supports multithreading and uses multiple websites for scraping. Also checks if previous tweets have been posted (this took a while!).
 
