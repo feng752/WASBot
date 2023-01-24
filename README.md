@@ -7,6 +7,8 @@ To use this bot, you will need to have a Twitter account and apply for a Twitter
 
 `Tweepy`
 
+`requests`
+
 `Beautiful Soup`
 
 
