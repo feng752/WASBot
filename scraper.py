@@ -4,25 +4,35 @@ from bs4 import BeautifulSoup
 
 tips_and_resources = []
 
-# Define the URL to scrape
-url = 'https://www.gamedeveloper.com/latest/news'
+# Define the websites to scrape
+websites = [
+    'https://www.gamedeveloper.com/latest/news',
+    'https://gamedev.expert/category/news/'
+]  # TODO implement general checking
+
 
 # Make the request and parse the HTML
-response = requests.get(url)
-soup = BeautifulSoup(response.text, 'html.parser')
+def scraper():
+    for url in websites:
+        response = requests.get(url)
+        html = response.content
 
-# Find all the article elements on the page
-articles = soup.find_all('div', class_='topic-content-article')
+        soup = BeautifulSoup(html, 'html.parser')
 
-# Iterate through the articles and extract the information we want
-for article in articles:
-    title = article.find('span', class_='article-title').text
-    link = article.find('a')['href']
-    tips_and_resources.append({'title': title, 'link': 'gamedeveloper.com' + link})
+        if "gamedeveloper" in url:  # Different HTML structures for each website
+            articles = soup.find_all('div', class_='topic-content-article')
+            for article in articles:
+                title = article.find('span', class_='article-title').text
+                link = article.find('a')['href']
+                tips_and_resources.append({'title': title, 'link': 'https://gamedeveloper.com' + link})
 
-# Print the list of articles
-for item in tips_and_resources:
-    print("Title: " + item["title"])
-    print("Link: " + item["link"])
-    print("\n")
+        elif "gamedev.expert" in url:
+            articles = soup.find_all('h2', class_='title')
+            for article in articles:
+                title = article.find('a').text
+                link = article.find('a')['href']
+                tips_and_resources.insert(0, {'title': title, 'link': link})
+
+
+scraper()
 
