@@ -18,8 +18,10 @@ def tweeting():
 
     tweeted = set()  # Create a set to store previously tweeted articles
 
-    for tweet in tweets:
+    for tweet in tweepy.Cursor(api.user_timeline).items():
         tweeted.add(tweet.text.split("\n", 1)[0])
+
+    print(tweeted)
 
     while True:
         for item in tips_and_resources:
@@ -30,7 +32,7 @@ def tweeting():
 
             if not tweet_exists:  # If tweet hasn't been tweeted, tweet it
                 try:
-                    api.update_status(item["title"] + "\n" + item["link"])
+                    api.update_status(item["title"] + "\n" + item["link"] + "\n#gamedev #indiegames #gamingnews #gamingindustry #gamebot")
                     time.sleep(3600)
                 except tweepy.errors.TweepyException as e:  # Exception handling
                     if e == 187:
