@@ -19,7 +19,7 @@ def tweeting():
     tweeted = set()  # Create a set to store previously tweeted articles
 
     for tweet in tweets:
-        tweeted.add(tweet.text)
+        tweeted.add(tweet.text.split("\n", 1)[0])
 
     while True:
         for item in tips_and_resources:
