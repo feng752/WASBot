@@ -7,7 +7,8 @@ tips_and_resources = []
 # Define the websites to scrape
 websites = [
     'https://www.gamedeveloper.com/latest/news',
-    'https://gamedev.expert/category/news/'
+    'https://gamedev.expert/category/news/',
+    'https://www.polygon.com/gaming'
 ]  # TODO implement general checking
 
 
@@ -33,6 +34,16 @@ def scraper():
                 link = article.find('a')['href']
                 tips_and_resources.insert(0, {'title': title, 'link': link})
 
+        elif "polygon" in url:
+            articles = soup.find_all('h2', class_='c-entry-box--compact__title')
+            for article in articles:
+                title = article.find('a').text
+                link = article.find('a')['href']
+                tips_and_resources.insert(0, {'title': title, 'link': link})
+
 
 scraper()
 
+for item in tips_and_resources:
+    print("Title: " + item['title'])
+    print("\nLink: " + item['link'] + "\n")
