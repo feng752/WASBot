@@ -27,7 +27,10 @@ def tweeting():
             # Check if the current tweet has already been posted
             if item['title'].strip() in tweeted:
                 continue
-
+            
+            if tweet_exists:
+                continue
+            
             if not tweet_exists:  # If tweet hasn't been tweeted, tweet it
                 try:
                     api.update_status(item["title"] + "\n" + item["link"] + "\n#gamedev #indiegames #gamingnews #gamingindustry #gamebot" + " #" + item['title'].split(" ", 1)[0].lower())
